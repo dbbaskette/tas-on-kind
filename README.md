@@ -33,8 +33,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
     curl https://raw.githubusercontent.com/cloudfoundry/cf-for-k8s/master/config-optional/remove-resource-requirements.yml > custom-overlays/remove-resource-requirements.yml
 
-    curl https://raw.githubusercontent.com/cloudfoundry/cf-for-k8s/master/config-optional/remove-ingressgateway-service.yml > 
-    custom-overlays/remove-resource-requirements.yml
+    curl https://raw.githubusercontent.com/cloudfoundry/cf-for-k8s/master/config-optional/remove-ingressgateway-service.yml > custom-overlays/remove-ingressgateway-service.yml
     ```
 1. Move load-balancer config file out of active configuration
     ```

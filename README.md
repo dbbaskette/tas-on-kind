@@ -14,7 +14,7 @@ k9s (not really required, but helpful) | brew install derailed/k9s/k9s
 TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
 
 
-## Preparing for Install
+## Installing TAS for K8s on KIND
 1. Verify Docker has at least 8GB of RAM
 1. Create work directory and cd into it.
     ```

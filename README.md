@@ -10,6 +10,7 @@ kind | brew install kind
 BOSH cli | brew install cloudfoundry/tap/bosh-cli
 kapp, kbld, ytt | brew install ytt kbld kapp
 cf cli | brew install cloudfoundry/tap/cf-cli
+helm | brew install helm
 k9s (not really required, but helpful) | brew install derailed/k9s/k9s  
 TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
 
@@ -92,7 +93,31 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
     ./bin/install-tas.sh ./config-values
     ```
-
-
+## Minibroker Install
+1. Create Namespace for minibroker and Install with helm
+    ```
+    kubectl create ns minibroker
+    helm repo add minibroker https://minibroker.blob.core.windows.net/charts
+    helm  repo update
+    helm install  minibroker --namespace minibroker minibroker/minibroker --set "deployServiceCatalog=false" --set "defaultNamespace=minibroker"
+    ```
+1. Create Service Broker in TAS for K8s and enable access to the services
+    ```
+    cf create-service-broker minibroker user pass http://minibroker-minibroker.minibroker.svc.cluster.local
+    cf service-access
+    cf enable-service-access mysql
+    cf enable-service-access redis
+    cf enable-service-access mongodb
+    cf enable-service-access mariadb
+    ```
+1. Verify services are available in the Marketplace
+    ```
+    cf marketplace
+    ```
+1. Create a mariadb service instance
+    ```
+    cf create-service mariadb 10-3-22 mariadb-svc -c '{"db.name":"my_database"}'
+    ```
+    
 
 

@@ -50,8 +50,8 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ---
     system_registry:
       hostname: registry.pivotal.io
-      username: YOUR-TANZU-NETWORK-REGISTRY-USERNAME
-      password: YOUR-TANZU-NETWORK-REGISTRY-PASSWORD
+      username: "YOUR-TANZU-NETWORK-REGISTRY-USERNAME"
+      password: "YOUR-TANZU-NETWORK-REGISTRY-PASSWORD"
     EOF
 1. Create the App Registry file and then fill it in with appropriate values
     ```
@@ -60,9 +60,9 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ---
     app_registry:
         hostname: "https://index.docker.io/v1/"
-        repository: YOUR_DOCKERHUB_USERNAME
-        username: YOUR_DOCKERHUB_USERNAME
-        password: YOUR DOCKERHUB PW
+        repository: "YOUR_DOCKERHUB_USERNAME"
+        username: "YOUR_DOCKERHUB_USERNAME"
+        password: "YOUR DOCKERHUB PW"
     EOF
 1. Generate defaults for the install 
     ```

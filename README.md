@@ -36,21 +36,21 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
 1. Create Nodeport custom-overlay
     ```
     cat > custom-overlays/use-nodeport-for-ingress.yml <<EOF
-    #@ load("@ytt:overlay", "overlay")
+    ##@ load("@ytt:overlay", "overlay")
 
     #@overlay/match by=overlay.subset({"kind":"Service","metadata":{"name":"istio-ingressgateway"}})
     ---
     spec:
-    #@overlay/match
-    type: NodePort
+      #@overlay/match
+      type: NodePort
 
-    ports:
-    #@overlay/match by="name"
-    - name: http2
+      ports:
+      #@overlay/match by="name"
+      - name: http2
         #@overlay/match missing_ok=True
         nodePort: 31080
-    #@overlay/match by="name"
-    - name: https
+      #@overlay/match by="name"
+      - name: https
         #@overlay/match missing_ok=True
         nodePort: 31443
     EOF

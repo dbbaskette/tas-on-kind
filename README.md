@@ -28,13 +28,13 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
     kind create cluster --name tasdesktop --config=cluster.yml --image kindest/node:v1.16.4
     ```
-1. Move the tas4k8s tarball into tasdesktop and untar it
+1. Download the tas4k8s tarball and place it in into tasdesktop and untar it
 1. Download remove-resource-requirements config file
     ```
     curl https://raw.githubusercontent.com/cloudfoundry/cf-for-k8s/master/config-optional/remove-resource-requirements.yml > custom-overlays/remove-resource-requirements.yml
 
     curl https://raw.githubusercontent.com/cloudfoundry/cf-for-k8s/master/config-optional/remove-ingressgateway-service.yml > custom-overlays/remove-ingressgateway-service.yml
-    ```
+    ```cd .
 1. Move load-balancer config file out of active configuration
     ```
     mv custom-overlays/replace-loadbalancer-with-clusterip.yaml config-optional/.
@@ -55,7 +55,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     EOF
 1. Create the App Registry file and then fill it in with appropriate values
     ```
-    cat > onfig-values/system-registry-values.yml <<EOF #@data/values
+    cat > config-values/app-registry-values.yml <<EOF #@data/values
     #@data/values
     ---
     app_registry:

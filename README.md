@@ -89,7 +89,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
      bin/generate-values.sh -d "vcap.me" > config-values/deployment-values.yml
     ```
-1. Install the install
+1. Install TAS on K8S
     ```
     ./bin/install-tas.sh ./config-values
     ```

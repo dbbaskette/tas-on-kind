@@ -23,7 +23,6 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
 1. Download a KIND Cluster Configuration file
     ```
     curl https://raw.githubusercontent.com/cloudfoundry/cf-for-k8s/master/deploy/kind/cluster.yml > cluster.yml
-
     ```
 1. Create your KIND cluster
     ```
@@ -33,6 +32,9 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
 1. Download remove-resource-requirements config file
     ```
     curl https://raw.githubusercontent.com/cloudfoundry/cf-for-k8s/master/config-optional/remove-resource-requirements.yml > custom-overlays/remove-resource-requirements.yml
+
+    curl https://raw.githubusercontent.com/cloudfoundry/cf-for-k8s/master/config-optional/remove-ingressgateway-service.yml > 
+    custom-overlays/remove-resource-requirements.yml
     ```
 1. Move load-balancer config file out of active configuration
     ```
@@ -65,10 +67,12 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     EOF
 1. Generate defaults for the install 
     ```
-    bin/generate-values.sh -d "vcap.me" > config-values/deployment-values.yml
+     bin/generate-values.sh -d "vcap.me" > config-values/deployment-values.yml
     ```
-1. ./bin/install-tas.sh ./config-values
-
+1. Install the install
+    ```
+    ./bin/install-tas.sh ./config-values
+    ```
 
 
 

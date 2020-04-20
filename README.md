@@ -53,6 +53,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
         - name: https
             #@overlay/match missing_ok=True
             nodePort: 31443
+    EOF
     ```
 
 1. Move load-balancer config file out of active configuration
@@ -75,7 +76,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     EOF
 1. Create the App Registry file and then fill it in with appropriate values
     ```
-    cat > config-values/app-registry-values.yml <<EOF #@data/values
+    cat > config-values/app-registry-values.yml <<EOF
     #@data/values
     ---
     app_registry:

@@ -93,6 +93,26 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
     ./bin/install-tas.sh ./config-values
     ```
+## Test TAS for Kubernetes Install
+1. Login to the API Server
+    ```
+    cf api api.vcap.me --skip-ssl-validation
+    cf auth admin "$(bosh interpolate config-values/deployment-values.yml --path /cf_admin_password)"
+    ```
+1. Enable diego_docker feature flag (temp BETA requirement)
+    ```
+    cf enable-feature-flag diego_docker
+    ```
+1. Create Org and Space for test
+    ```
+    cf create-org test-org
+    cf create-space -o test-org test-space
+    cf target -o test-org -s test-space
+    ```
+1. Push Test App
+    ```
+    cf push demo-app -o rseroter/simple-k8s-app-kpack
+    ```
 ## Minibroker Install
 1. Create Namespace for minibroker and Install with helm
     ```

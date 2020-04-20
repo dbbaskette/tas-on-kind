@@ -28,7 +28,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
     kind create cluster --name tasdesktop --config=cluster.yml --image kindest/node:v1.16.4
     ```
-1. Download the tas4k8s tarball and place it in into tasdesktop and untar it
+1. Download the tas4k8s tarball and place it in into tasdesktop directory and untar it
 1. Download remove-resource-requirements config file
     ```
     curl https://raw.githubusercontent.com/cloudfoundry/cf-for-k8s/master/config-optional/remove-resource-requirements.yml > custom-overlays/remove-resource-requirements.yml
@@ -41,21 +41,20 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     #@overlay/match by=overlay.subset({"kind":"Service","metadata":{"name":"istio-ingressgateway"}})
     ---
     spec:
-        #@overlay/match
-        type: NodePort
+    #@overlay/match
+    type: NodePort
 
-        ports:
-        #@overlay/match by="name"
-        - name: http2
-            #@overlay/match missing_ok=True
-            nodePort: 31080
-        #@overlay/match by="name"
-        - name: https
-            #@overlay/match missing_ok=True
-            nodePort: 31443
+    ports:
+    #@overlay/match by="name"
+    - name: http2
+        #@overlay/match missing_ok=True
+        nodePort: 31080
+    #@overlay/match by="name"
+    - name: https
+        #@overlay/match missing_ok=True
+        nodePort: 31443
     EOF
     ```
-
 1. Move load-balancer config file out of active configuration
     ```
     mv custom-overlays/replace-loadbalancer-with-clusterip.yaml config-optional/.

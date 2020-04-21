@@ -34,7 +34,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
     curl https://raw.githubusercontent.com/cloudfoundry/cf-for-k8s/master/config-optional/remove-resource-requirements.yml > custom-overlays/remove-resource-requirements.yml
     ```
-1. Downloadu se-nodeport-for-ingress.yml
+1. Downloadu use-nodeport-for-ingress.yml
     ```
     curl https://github.com/cloudfoundry/cf-for-k8s/blob/ed4c9ea79025bb4767543cb013d3c854d1cd2b72/config-optional/use-nodeport-for-ingress.yml > custom-overlays/use-nodeport-for-ingress.yml
     ```

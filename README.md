@@ -137,6 +137,6 @@ kubectl config set clusters.${KIND_CTX}.server $(kind get kubeconfig --name ${KI
 kubectl config set clusters.${KIND_CTX}.certificate-authority-data $(kind get kubeconfig --name ${KIND_CLUSTER} -q | yq read -j - | jq -r '.clusters[].cluster."certificate-authority-data"')
 kubectl config set users.${KIND_CTX}.client-certificate-data $(kind get kubeconfig --name ${KIND_CLUSTER} -q | yq read -j - | jq -r '.users[].user."client-certificate-data"')
 kubectl config set users.${KIND_CTX}.client-key-data $(kind get kubeconfig --name ${KIND_CLUSTER} -q | yq read -j - | jq -r '.users[].user."client-key-data"')`
-```    
+```  
 
 

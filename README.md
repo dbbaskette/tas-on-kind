@@ -34,27 +34,9 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
     curl https://raw.githubusercontent.com/cloudfoundry/cf-for-k8s/master/config-optional/remove-resource-requirements.yml > custom-overlays/remove-resource-requirements.yml
     ```
-1. Create Nodeport custom-overlay
+1. Downloadu se-nodeport-for-ingress.yml
     ```
-    cat > custom-overlays/use-nodeport-for-ingress.yml <<EOF
-    #@ load("@ytt:overlay", "overlay")
-
-    #@overlay/match by=overlay.subset({"kind":"Service","metadata":{"name":"istio-ingressgateway"}})
-    ---
-    spec:
-      #@overlay/match
-      type: NodePort
-
-      ports:
-      #@overlay/match by="name"
-      - name: http2
-        #@overlay/match missing_ok=True
-        nodePort: 31080
-      #@overlay/match by="name"
-      - name: https
-        #@overlay/match missing_ok=True
-        nodePort: 31443
-    EOF
+    curl https://github.com/cloudfoundry/cf-for-k8s/blob/ed4c9ea79025bb4767543cb013d3c854d1cd2b72/config-optional/use-nodeport-for-ingress.yml > custom-overlays/use-nodeport-for-ingress.yml
     ```
 1. Move load-balancer config file out of active configuration
     ```

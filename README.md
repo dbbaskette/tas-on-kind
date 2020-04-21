@@ -122,7 +122,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
 
 ## Restarting TAS Cluster
-If you want to shutdown the KIND docker container, or it shutsdown for any reason, the KIND cluster will not restart automatically. Create a restart.sh and run it to restart your KIND Cluster.
+If you want to shutdown the KIND docker container, or it shuts down for any reason, the KIND cluster will not restart automatically. Create a restart.sh and run it to restart your KIND Cluster.
 ``` 
 #!/usr/bin/env bash
 KIND_CLUSTER="tasdesktop"

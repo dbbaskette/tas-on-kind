@@ -123,20 +123,23 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
 
 ## Restarting TAS Cluster
 If you want to shutdown the KIND docker container, or it shuts down for any reason, the KIND cluster will not restart automatically. Create a restart.sh and run it to restart your KIND Cluster.
-``` 
-#!/usr/bin/env bash
-KIND_CLUSTER="tasdesktop"
-KIND_CTX="kind-${KIND_CLUSTER}"
 
-for container in $(kind get nodes --name ${KIND_CLUSTER}); do
-    [[ $(docker inspect -f '{{.State.Running}}' $container) == "true" ]] || docker start $container
-done
-sleep 1
-docker exec ${KIND_CLUSTER}-control-plane sh -c 'mount -o remount,ro /sys; kill -USR1 1'
-kubectl config set clusters.${KIND_CTX}.server $(kind get kubeconfig --name ${KIND_CLUSTER} -q | yq read -j - | jq -r '.clusters[].cluster.server')
-kubectl config set clusters.${KIND_CTX}.certificate-authority-data $(kind get kubeconfig --name ${KIND_CLUSTER} -q | yq read -j - | jq -r '.clusters[].cluster."certificate-authority-data"')
-kubectl config set users.${KIND_CTX}.client-certificate-data $(kind get kubeconfig --name ${KIND_CLUSTER} -q | yq read -j - | jq -r '.users[].user."client-certificate-data"')
-kubectl config set users.${KIND_CTX}.client-key-data $(kind get kubeconfig --name ${KIND_CLUSTER} -q | yq read -j - | jq -r '.users[].user."client-key-data"')`
-```  
+1. Install yq (brew install yq)
+1. Create restart-kind.sh and make it executable
+    ``` 
+    #!/usr/bin/env bash
+    KIND_CLUSTER="tasdesktop"
+    KIND_CTX="kind-${KIND_CLUSTER}"
+
+    for container in $(kind get nodes --name ${KIND_CLUSTER}); do
+        [[ $(docker inspect -f '{{.State.Running}}' $container) == "true" ]] || docker start $container
+    done
+    sleep 1
+    docker exec ${KIND_CLUSTER}-control-plane sh -c 'mount -o remount,ro /sys; kill -USR1 1'
+    kubectl config set clusters.${KIND_CTX}.server $(kind get kubeconfig --name ${KIND_CLUSTER} -q | yq read -j - | jq -r '.clusters[].cluster.server')
+    kubectl config set clusters.${KIND_CTX}.certificate-authority-data $(kind get kubeconfig --name ${KIND_CLUSTER} -q | yq read -j - | jq -r '.clusters[].cluster."certificate-authority-data"')
+    kubectl config set users.${KIND_CTX}.client-certificate-data $(kind get kubeconfig --name ${KIND_CLUSTER} -q | yq read -j - | jq -r '.users[].user."client-certificate-data"')
+    kubectl config set users.${KIND_CTX}.client-key-data $(kind get kubeconfig --name ${KIND_CLUSTER} -q | yq read -j - | jq -r '.users[].user."client-key-data"')`
+    ```  
 
 

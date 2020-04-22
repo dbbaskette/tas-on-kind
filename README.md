@@ -122,6 +122,32 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
     cf create-service mariadb 10-3-22 mariadb-svc -c '{"db": {"name": "my_database"}}'
     ```
+1. Monitor the creation until it reports _**create succeeeded**_
+    ```
+    cf service
+    ```
+
+## Deploying the Demo Application
+1. Clone the Demo App Repo and then go into the repo sirectory
+    ```
+    git clone https://github.com/dbbaskette/todos-pcf.git
+    cd todos-pcf
+    ```
+1.  Push todos-ui to TAS4K8s. This is an example of pushing a prebuilt Docker container from a Repo. The Dockerfile is included if you would like to build your own version and push it to your own Docker Repo. Just remember to change the manifest.yml.
+    ```
+    cd todo-ui
+    cf push 
+    ```
+1. Push todo-service to TAS4K8s. This is an example of pushing source code to TAS4K8s. The embedded Tanzu Build Service will build the source code and then package it in a container with all its dependencies.
+    ```
+    cd ../todo-service
+    cf push
+    ```
+1. After the push succeeds, browse to http://todo.vcap.me
+
+
+
+
 
 ## Restarting TAS Cluster
 If you want to shutdown the KIND docker container, or it shuts down for any reason, the KIND cluster will not restart automatically. Create a restart.sh and run it to restart your KIND Cluster.

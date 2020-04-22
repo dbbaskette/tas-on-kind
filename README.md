@@ -120,7 +120,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
 1. Create a mariadb service instance
     ```
-    cf create-service mariadb 10-3-22 mariadb-svc -c '{"db": {"name": "my_database"}}
+    cf create-service mariadb 10-3-22 mariadb-svc -c '{"db": {"name": "my_database"}}'
     ```
 1. Monitor the creation until it reports _**create succeeeded**_
     ```

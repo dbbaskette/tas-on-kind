@@ -10,8 +10,8 @@ kind | brew install kind
 BOSH cli | brew install cloudfoundry/tap/bosh-cli
 kapp, kbld, ytt | brew install ytt kbld kapp
 cf cli | brew install cloudfoundry/tap/cf-cli
-jq | sudo apt install jq
-yq | snap install yq
+jq | brew install jq
+yq | brew install yq
 helm | brew install helm
 k9s (not really required, but helpful) | brew install derailed/k9s/k9s  
 TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes

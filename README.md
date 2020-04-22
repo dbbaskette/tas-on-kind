@@ -38,7 +38,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
 1. Download use-nodeport-for-ingress.yml
     ```
-    curl https://github.com/cloudfoundry/cf-for-k8s/blob/ed4c9ea79025bb4767543cb013d3c854d1cd2b72/config-optional/use-nodeport-for-ingress.yml > custom-overlays/use-nodeport-for-ingress.yml
+    curl https://raw.githubusercontent.com/cloudfoundry/cf-for-k8s/ed4c9ea79025bb4767543cb013d3c854d1cd2b72/config-optional/use-nodeport-for-ingress.yml > custom-overlays/use-nodeport-for-ingress.yml
     ```
 1. Move load-balancer config file out of active configuration
     ```

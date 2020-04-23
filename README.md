@@ -1,3 +1,6 @@
+[Installing TAS for K8S on KIND - Walkthrough Video ](https://youtu.be/B-h2yggVk8w)
+
+
 # tas-on-kind
 
 

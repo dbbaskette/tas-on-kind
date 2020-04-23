@@ -11,7 +11,7 @@ kubectl | brew install kubernetes-cli
 docker |  Download from docker.com and Install dmg
 kind | brew install kind
 BOSH cli | brew install cloudfoundry/tap/bosh-cli
-kapp, kbld, ytt | brew install ytt kbld kapp
+kapp, kbld, ytt | brew tap k14s/tap;brew install ytt kbld kapp
 cf cli | brew install cloudfoundry/tap/cf-cli
 jq | brew install jq
 yq | brew install yq

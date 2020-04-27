@@ -24,7 +24,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
 1. Verify Docker has at least 8GB of RAM
 1. Create work directory and cd into it.
     ```
-    mkdir tasdesktop; cd taskdesktop
+    mkdir tasdesktop; cd tasdesktop
     ```
 1. Download a KIND Cluster Configuration file
     ```

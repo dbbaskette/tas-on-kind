@@ -34,7 +34,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
     kind create cluster --name tasdesktop --config=cluster.yml --image kindest/node:v1.16.4
     ```
-1. Download the tas4k8s tarball and place it in into tasdesktop directory and untar it
+1. Download the tas4k8s [tarball v0.1.0](https://network.pivotal.io/products/tas-for-kubernetes/#/releases/623509) and place it in into tasdesktop directory and untar it
 1. Download remove-resource-requirements config file
     ```
     curl https://raw.githubusercontent.com/cloudfoundry/cf-for-k8s/master/config-optional/remove-resource-requirements.yml > custom-overlays/remove-resource-requirements.yml
@@ -76,7 +76,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
      bin/generate-values.sh -d "vcap.me" > config-values/deployment-values.yml
     ```
-1. Install TAS on K8S
+1. Install TAS on K8S.  Takes about 10 minutes.
     ```
     ./bin/install-tas.sh ./config-values
     ```
@@ -127,11 +127,11 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     ```
 1. Monitor the creation until it reports _**create succeeeded**_
     ```
-    cf service
+    cf services
     ```
 
 ## Deploying the Demo Application
-1. Clone the Demo App Repo and then go into the repo sirectory
+1. Clone the Demo App Repo and then go into the repo's directory
     ```
     git clone https://github.com/dbbaskette/todos-pcf.git
     cd todos-pcf
@@ -146,7 +146,7 @@ TAS for K8s | https://network.pivotal.io/products/tas-for-kubernetes
     cd ../todo-service
     cf push
     ```
-1. After the push succeeds, browse to http://todo.vcap.me
+1. After the push succeeds (could be 8+ minutes of first staging attempt due to maven downloads), browse to http://todo.vcap.me
 
 
 
